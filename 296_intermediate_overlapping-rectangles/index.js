@@ -3,19 +3,6 @@ const findOverlapingArea = (firstRec, secondRec) => {
   secondRec = getCoordinates(secondRec);
   let xLength = getLength(firstRec[0].x, firstRec[1].x, secondRec[0].x, secondRec[1].x);
   let yLength = getLength(firstRec[0].y, firstRec[1].y, secondRec[0].y, secondRec[1].y);
-
-  // if (overlapping(firstRec[0].x, secondRec[0].x, firstRec[1].x)) {
-  //   xLength = 
-  // } else {
-  //   xLength = 0;
-  // }
-
-  // if (overlapping(firstRec[0].y, secondRec[0].y, firstRec[1].y)) {
-  //   yLength
-  // } else {
-  //   yLength = 0;
-  // }
-
   console.log(xLength * yLength);
 };
 
