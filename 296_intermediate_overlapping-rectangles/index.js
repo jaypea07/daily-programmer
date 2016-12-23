@@ -16,12 +16,8 @@ const getCoordinates = (coordinateString) => {
   });
 };
 
-const overlapping = (a, b, c) => {
-  return ((a <= b && b <= c) || (a >= b && b >= c));
-};
-
 const getLength = (a, b, c, d) => {
-  if (overlapping(a, c, b)) {
+  if ((a <= c && c <= b) || (a >= c && c >= b)) {
     let ar = [a, b, c, d].map((n) => {
       return parseFloat(n);
     }).sort((a, b) => {
