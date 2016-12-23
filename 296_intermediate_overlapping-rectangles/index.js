@@ -7,23 +7,13 @@ const findOverlapingArea = (firstRec, secondRec) => {
   let yLength;
 
   if (xOverlaps) {
-    let xValues = [firstRec[0].x, firstRec[1].x, secondRec[0].x, secondRec[1].x].map((x) => {
-      return parseFloat(x);
-    }).sort((a, b) => {
-      return a - b;
-    });
-    xLength = xValues[2] - xValues[1];
+    xLength = getLength(firstRec[0].x, firstRec[1].x, secondRec[0].x, secondRec[1].x);
   } else {
     xLength = 0;
   }
 
   if (yOverlaps) {
-    let yValues = [firstRec[0].y, firstRec[1].y, secondRec[0].y, secondRec[1].y].map((y) => {
-      return parseFloat(y);
-    }).sort((a, b) => {
-      return a - b;
-    });
-    yLength = yValues[2] - yValues[1];
+    yLength = getLength(firstRec[0].y, firstRec[1].y, secondRec[0].y, secondRec[1].y);
   } else {
     yLength = 0;
   }
@@ -43,6 +33,15 @@ const getCoordinates = (coordinateString) => {
 
 const overlapping = (a, b, c) => {
   return ((a <= b && b <= c) || (a >= b && b >= c));
+};
+
+const getLength = (a, b, c, d) => {
+  let ar = [a, b, c, d].map((n) => {
+    return parseFloat(n);
+  }).sort((a, b) => {
+    return a - b;
+  });
+  return ar[2] - ar[1];
 };
 
 // TESTING
