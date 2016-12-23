@@ -16,9 +16,9 @@ const getCoordinates = (coordinateString) => {
   });
 };
 
-const getLength = (a, b, c, d) => {
-  if ((a <= c && c <= b) || (a >= c && c >= b)) {
-    let ar = [a, b, c, d].map((n) => {
+const getLength = (rec1a, rec1b, rec2a, rec2b) => {
+  if ((rec1a <= rec2a && rec2a <= rec1b) || (rec1a >= rec2a && rec2a >= rec1b)) {
+    let ar = [rec1a, rec1b, rec2a, rec2b].map((n) => {
       return parseFloat(n);
     }).sort((a, b) => {
       return a - b;
