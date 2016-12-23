@@ -1,9 +1,8 @@
 const findOverlapingArea = (firstRec, secondRec) => {
   firstRec = getCoordinates(firstRec);
   secondRec = getCoordinates(secondRec);
-
-  let xOverlaps = (firstRec[0].x <= secondRec[0].x && secondRec[0].x <= firstRec[1].x) || (firstRec[0].x >= secondRec[0].x && secondRec[0].x >= firstRec[1].x);
-  let yOverlaps = (firstRec[0].y <= secondRec[0].y && secondRec[0].y <= firstRec[1].y) || (firstRec[0].y >= secondRec[0].y && secondRec[0].y >= firstRec[1].y);
+  let xOverlaps = overlapping(firstRec[0].x, secondRec[0].x, firstRec[1].x);
+  let yOverlaps = overlapping(firstRec[0].y, secondRec[0].y, firstRec[1].y);
   let xLength;
   let yLength;
 
@@ -41,3 +40,12 @@ const getCoordinates = (coordinateString) => {
     };
   });
 };
+
+const overlapping = (a, b, c) => {
+  return ((a <= b && b <= c) || (a >= b && b >= c));
+};
+
+// TESTING
+findOverlapingArea('0,0 2,2', '1,1 3,3');
+findOverlapingArea('-3.5,4 1,1', '1,3.5 -2.5,-1');
+findOverlapingArea('-4,4 -0.5,2', '0.5,1 3.5,3');
