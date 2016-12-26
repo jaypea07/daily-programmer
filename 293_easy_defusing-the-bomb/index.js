@@ -1,33 +1,24 @@
+const explosionTriggers = {
+  white:  ['white', 'black'],
+  red:    ['white', 'red', 'black', 'orange', 'purple'],
+  black:  ['white', 'green', 'orange'],
+  orange: ['white', 'orange', 'green', 'purple'],
+  green:  ['red', 'black', 'green', 'purple'],
+  purple: ['white', 'orange', 'green', 'purple']
+};
+
 const defuse = (instructions) => {
-  let explosion = false;
+  let bombStatus = 'Bomb defused!';
 
   instructions.map((wireColor, i, instructions) => {
-    let lastColor = instructions[i-1];
-
-    switch (lastColor) {
-      case 'white':
-        if (wireColor === 'white' || wireColor === 'black') explosion = true;
-        break;
-      case 'red':
-        if (wireColor !== 'green') explosion = true;
-        break;
-      case 'black':
-        if (wireColor === 'white' || wireColor === 'green' || wireColor === 'orange') explosion = true;
-        break;
-      case 'orange':
-        if (wireColor !== 'red' && wireColor !== 'black') explosion = true;
-        break;
-      case 'green':
-        if (wireColor !== 'orange' && wireColor !== 'white') explosion = true;
-        break;
-      case 'purple':
-        if (wireColor === 'purple' || wireColor === 'green' || wireColor === 'orange' || wireColor === 'white') explosion = true;
-        break;
-    };
+    if (i > 0) {
+      explosionTriggers[ instructions[i-1] ].map((trigger) => {
+        if (wireColor === trigger) bombStatus = 'BOOM!';
+      });
+    }
   });
 
-  if (explosion) console.log('BOOM!');
-  else console.log('Bomb defused!');
+  console.log(bombStatus);
 };
 
 defuse(['white', 'red', 'green', 'white']);     // Bomb defused!
