@@ -2,6 +2,8 @@
 
 **URL:** https://www.reddit.com/r/dailyprogrammer/comments/5j6ggm/20161219_challenge_296_easy_the_twelve_days_of/
 
+Done with both bonuses.
+
 ## Usage
 Calling `song(giftList)` will output:
 
