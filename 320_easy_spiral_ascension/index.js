@@ -35,7 +35,28 @@ const spiral = input => {
     }
   }
 
-  console.log(matrix);
+  console.log(formatOutput(matrix, count));
 };
 
-spiral(5);
+const formatOutput = (matrix, count) => {
+  let output = '';
+  const totalDigits = getDigits(count - 1);
+
+  matrix.map(line => {
+    line.map(number => {
+      for (let i = 0; i < totalDigits - getDigits(number); i++) {
+        output += ' ';
+      }
+      output += `${number} `;
+    });
+    output += '\n';
+  });
+
+  return output;
+};
+
+const getDigits = int => {
+  return int.toString().length;
+};
+
+spiral(10);
